@@ -1,0 +1,16 @@
+##web服务器的url重启
+#
+#RewriteEngine On #引擎开启
+#RewriteBase / #从根目录开启查找有效
+#
+##允许存在的时候访问目录和文件都有效
+#RewriteCond %{REQUEST_FILENAE} !-f #允许存在的时候用户访问文件有效
+#RewriteCond %{REQUEST_FILENAE} !-d  #允许存在的时候用户访问目录有效
+#
+##重写路由规则
+#RewriteRule ^(.*)$ index.php?1 [QSA,L]
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$  /index.php?/$1 [PT,L]
